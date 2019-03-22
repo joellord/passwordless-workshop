@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, Response
 import os
 from api_auth_header import AuthError, requires_auth
 from flask_cors import CORS
@@ -10,9 +10,10 @@ CORS(app)
 
 @app.errorhandler(AuthError)
 def handle_auth_error(ex):
-    response = jsonify(ex.error)
-    response.status_code = ex.status_code
-    return response
+    # response = jsonify(ex.error)
+    # response.status_code = ex.status_code
+    # return response
+    return Response(str(ex.error), ex.status_code, {})
 
 @app.route("/headline")
 def headline():
