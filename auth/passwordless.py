@@ -64,7 +64,7 @@ def login(magic_link):
     return redirect(redirect_url, 302)
 
 
-def detroy_magic_link(link):
+def destroy_magic_link(link):
     try:
         del magic_links[link]
 
